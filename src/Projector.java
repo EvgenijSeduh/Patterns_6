@@ -10,9 +10,8 @@ public class Projector {
     }
 
     public void setConnection(StreamingDevice streamingDevice){
-        if(streamingDevice.status()){
             connection = true;
-        }
+            this.streamingDevice = streamingDevice;
     }
 
     public void on() {
@@ -26,15 +25,22 @@ public class Projector {
     }
 
     public void playVideo() {
-        if (power)
-            if (connection) {
-                streaming = true;
-                System.out.println("Projector " + name + " broadcasts video");
-            }
-            else System.out.println("No connection");
-        else
-            System.out.println("The projector " + name + " doesn't have enough power");
-
+        if(streamingDevice == null){
+            System.out.println(name + " not found connection device");
+            return;
+        }
+        if (!streamingDevice.status()) {
+            System.out.println(name + " no signal");
+            return;
+        }
+        if (!power) {
+            System.out.println(name + " doesn't have enough power");
+            return;
+        }
+        if (connection) {
+            streaming = true;
+            System.out.println("Projector " + name + " broadcasts video");
+        } else System.out.println(name + " no connection");
     }
 
     public void stopVideo() {
@@ -44,9 +50,5 @@ public class Projector {
                 System.out.println("The projector " + name + " has stopped streaming the video");
             }
             else System.out.println("No connection");
-    }
-
-    public void connectedNewDevice(){
-
     }
 }
