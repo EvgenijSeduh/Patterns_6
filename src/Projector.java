@@ -1,12 +1,16 @@
 public class Projector {
+    private static Projector instance;
     private String name;
     private boolean power = false;
     private boolean connection = false;
     private boolean streaming = false;
     private StreamingDevice streamingDevice;
 
-    public Projector(String name) {
-        this.name = name;
+    public static Projector getInstance(String name){
+        if (instance == null){
+            instance = new Projector();
+            instance.name = name;
+        } return instance;
     }
 
     public void setConnection(StreamingDevice streamingDevice){

@@ -1,13 +1,21 @@
 public class HomeTheaterManager {
+    private static HomeTheaterManager instance;
     private StreamingDevice computer;
     private SoundSystem soundSystem;
     private Projector projector;
     private HomeTheater homeTheater;
     private int idSpeaker = 0;
+
+    public static HomeTheaterManager getInstance(){
+        if(instance == null){
+            instance = new HomeTheaterManager();
+        }return instance;
+    }
+
     public void createHomeTheater() {
         computer = new Computer("computer1");
         soundSystem = new SoundSystem("speaker_system1");
-        projector = new Projector("projector1");
+        projector = Projector.getInstance("projector1");
         homeTheater = new HomeTheater(soundSystem, projector, computer);
     }
 

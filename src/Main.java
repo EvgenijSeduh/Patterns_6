@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        HomeTheaterManager homeTheaterManager = new HomeTheaterManager();
+        HomeTheaterManager homeTheaterManager = HomeTheaterManager.getInstance();
 
         homeTheaterManager.createHomeTheater();
         homeTheaterManager.newSpeaker();
