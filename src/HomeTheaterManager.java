@@ -41,4 +41,14 @@ public class HomeTheaterManager {
         computer.startStream();
         projector.playVideo();
     }
+    public void offAllDevice(){
+        soundSystem.off();
+        computer.off();
+        projector.off();
+    }
+    public void offFilm(){
+        projector.stopVideo();
+        computer.startStream();
+        soundSystem.stopSound();
+    }
 }
