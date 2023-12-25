@@ -13,10 +13,13 @@ public class HomeTheaterManager {
     }
 
     public void createHomeTheater() {
-        computer = new Computer("computer1");
-        soundSystem = new SoundSystem("speaker_system1");
+        if(computer == null)
+            computer = new Computer("computer1");
+        if(soundSystem == null)
+            soundSystem = new SoundSystem("speaker_system1");
         projector = Projector.getInstance("projector1");
-        homeTheater = new HomeTheater(soundSystem, projector, computer);
+        if(homeTheater == null)
+            homeTheater = new HomeTheater(soundSystem, projector, computer);
     }
 
     public void newSpeaker(){
@@ -38,7 +41,7 @@ public class HomeTheaterManager {
 
     public void playFilm(){
         soundSystem.playSound();
-        computer.startStream();
+        computer.stopStream();
         projector.playVideo();
     }
     public void offAllDevice(){
@@ -46,9 +49,9 @@ public class HomeTheaterManager {
         computer.off();
         projector.off();
     }
-    public void offFilm(){
-        projector.stopVideo();
+    public void offVideo(){
         computer.startStream();
+        projector.stopVideo();
         soundSystem.stopSound();
     }
 }

@@ -1,7 +1,9 @@
 public class AdapterTheaterToClient extends HomeTheaterManager implements Client{
+
     @Override
     public void onTheater() {
         createHomeTheater();
+        newSpeaker();
         onAllDevice();
         createConnectionWithDevice();
     }
@@ -18,6 +20,6 @@ public class AdapterTheaterToClient extends HomeTheaterManager implements Client
 
     @Override
     public void offFilm() {
-        offFilm();
+        offVideo();
     }
 }
